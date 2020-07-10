@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block body %}
+<div class="container">
+        <div class="row w-100 p-3">
+            <h1 class="w-100 p-2">Hello, Mate!</h1>
+            <p class="w-100 p-2">Welcome to Tail stores. This app displays store locations sorted in the alphabetical order with relevant
+                longitude and latitude numbers. Twitter bootstrap library is utilised for basic formatting.</p>
+            <h3 class="w-100 p-2">List of all Stores</h3>
+        </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <p class="p-3 w-75" style="text-align: center;">Total of {{stores|length}} stores are in the list.</p>
+        <div class="row w-50 p-3">
+            <ul class="list-group">
+                {% for store in stores %}
+                <li class="list-group-item">
+                    <p>Located in <strong>{{ store.name }}</strong> within postcode <strong>{{ store.postcode }}</strong></p>
+                    {% if store.latitude %}
+                    <p>Latitude {{ store.latitude }} Longitude {{ store.longitude }}</p>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
